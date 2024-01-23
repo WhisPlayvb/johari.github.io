@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Button Selector with Descriptions</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-description {
+            text-align: center;
+            margin: 10px;
+        }
+
+        .button {
+            width: 150px;
+            height: 30px;
+            margin-bottom: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+        }
+
+        .button.selected {
+            background-color: #2ecc71;
+        }
+
+        .description {
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        #saveButton {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #27ae60;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #saveButton:hover {
+            background-color: #219652;
+        }
+
+        #downloadSelected {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var selectedButtons = [];
+
+        function updateDownloadLink() {
+            var selectedLink = document.getElementById('downloadSelected');
+            selectedLink.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(selectedButtons.join(','));
+        }
+
+        // Event delegation: Add click event listener to the parent container of buttons
+        document.getElementById('buttonContainer').addEventListener('click', function (event) {
+            var button = event.target;
+
+            // Check if the clicked element is a button
+            if (button.classList.contains('button')) {
+                // Toggle 'selected' class for the clicked button
+                button.classList.toggle('selected');
+
+                // Update the selected buttons array
+                if (button.classList.contains('selected')) {
+                    selectedButtons.push(button.id);
+                } else {
+                    selectedButtons = selectedButtons.filter(selectedButton => selectedButton !== button.id);
+                }
+
+                // Update download link
+                updateDownloadLink();
+            }
+        });
+
+        // Save button click event
+        document.getElementById('saveButton').addEventListener('click', function () {
+            // Trigger the click event for the download link
+            var selectedLink = document.getElementById('downloadSelected');
+            selectedLink.click();
+        });
+    });
+</script>
+
+<!-- Container for buttons and descriptions -->
+<div class="button-container" id="buttonContainer">
+
+    <div class="button-description">
+        <button id="Able" class="button" data-description="Capable and skillful.">Able</button>
+        <p class="description" id="description1">Capable and skillful.</p>
+    </div>
+    <div class="button-description">
+        <button id="Accepting" class="button" data-description="Open-minded and non-judgmental.">Accepting</button>
+        <p class="description" id="description2">Open-minded and non-judgmental.</p>
+    </div>
+    <div class="button-description">
+        <button id="Adaptable" class="button" data-description="Flexible and able to adjust to new situations.">Adaptable</button>
+        <p class="description" id="description3">Flexible and able to adjust to new situations.</p>
+    </div>
+    <div class="button-description">
+        <button id="Bold" class="button" data-description="Courageous and daring.">Bold</button>
+        <p class="description" id="description4">Courageous and daring.</p>
+    </div>
+    <div class="button-description">
+        <button id="Brave" class="button" data-description="Fearless and courageous.">Brave</button>
+        <p class="description" id="description5">Fearless and courageous.</p>
+    </div>
+    <div class="button-description">
+        <button id="Calm" class="button" data-description="Composed and serene.">Calm</button>
+        <p class="description" id="description6">Composed and serene.</p>
+    </div>
+    <div class="button-description">
+        <button id="Caring" class="button" data-description="Compassionate and considerate.">Caring</button>
+        <p class="description" id="description7">Compassionate and considerate.</p>
+    </div>
+    <div class="button-description">
+        <button id="Cheerful" class="button" data-description="Optimistic and joyful.">Cheerful</button>
+        <p class="description" id="description8">Optimistic and joyful.</p>
+    </div>
+    <div class="button-description">
+        <button id="Clever" class="button" data-description="Quick-witted and intelligent.">Clever</button>
+        <p class="description" id="description9">Quick-witted and intelligent.</p>
+    </div>
+    <div class="button-description">
+        <button id="Complex" class="button" data-description="Multi-faceted and intricate.">Complex</button>
+        <p class="description" id="description10">Multi-faceted and intricate.</p>
+    </div>
+    <div class="button-description">
+        <button id="Confident" class="button" data-description="Self-assured and self-reliant.">Confident</button>
+        <p class="description" id="description11">Self-assured and self-reliant.</p>
+    </div>
+    <div class="button-description">
+        <button id="Dependable" class="button" data-description="Reliable and trustworthy.">Dependable</button>
+        <p class="description" id="description12">Reliable and trustworthy.</p>
+    </div>
+    <div class="button-description">
+        <button id="Dignified" class="button" data-description="Gracious and composed.">Dignified</button>
+        <p class="description" id="description13">Gracious and composed.</p>
+    </div>
+    <div class="button-description">
+        <button id="Energetic" class="button" data-description="Vigorous and enthusiastic.">Energetic</button>
+        <p class="description" id="description14">Vigorous and enthusiastic.</p>
+    </div>
+    <div class="button-description">
+        <button id="Extroverted" class="button" data-description="Outgoing and sociable.">Extroverted</button>
+        <p class="description" id="description15">Outgoing and sociable.</p>
+    </div>
+    <div class="button-description">
+        <button id="Friendly" class="button" data-description="Approachable and sociable.">Friendly</button>
+        <p class="description" id="description16">Approachable and sociable.</p>
+    </div>
+    <div class="button-description">
+        <button id="Giving" class="button" data-description="Generous and altruistic.">Giving</button>
+        <p class="description" id="description17">Generous and altruistic.</p>
+    </div>
+    <div class="button-description">
+        <button id="Happy" class="button" data-description="Content and joyful.">Happy</button>
+        <p class="description" id="description18">Content and joyful.</p>
+    </div>
+    <div class="button-description">
+        <button id="Helpful" class="button" data-description="Supportive and assisting.">Helpful</button>
+        <p class="description" id="description19">Supportive and assisting.</p>
+    </div>
+    <div class="button-description">
+        <button id="Idealistic" class="button" data-description="Visionary and optimistic.">Idealistic</button>
+        <p class="description" id="description20">Visionary and optimistic.</p>
+    </div>
+    <div class="button-description">
+        <button id="Independent" class="button" data-description="Self-reliant and self-sufficient.">Independent</button>
+        <p class="description" id="description21">Self-reliant and self-sufficient.</p>
+    </div>
+    <div class="button-description">
+        <button id="Ingenious" class="button" data-description="Clever and inventive.">Ingenious</button>
+        <p class="description" id="description22">Clever and inventive.</p>
+    </div>
+    <div class="button-description">
+        <button id="Intelligent" class="button" data-description="Smart and knowledgeable.">Intelligent</button>
+        <p class="description" id="description23">Smart and knowledgeable.</p>
+    </div>
+    <div class="button-description">
+        <button id="Introverted" class="button" data-description="Reserved and reflective.">Introverted</button>
+        <p class="description" id="description24">Reserved and reflective.</p>
+    </div>
+    <div class="button-description">
+        <button id="Kind" class="button" data-description="Gentle and compassionate.">Kind</button>
+        <p class="description" id="description25">Gentle and compassionate.</p>
+    </div>
+    <div class="button-description">
+        <button id="Knowledgeable" class="button" data-description="Well-informed and educated.">Knowledgeable</button>
+        <p class="description" id="description26">Well-informed and educated.</p>
+    </div>
+    <div class="button-description">
+        <button id="Logical" class="button" data-description="Rational and reasonable.">Logical</button>
+        <p class="description" id="description27">Rational and reasonable.</p>
+    </div>
+    <div class="button-description">
+        <button id="Loving" class="button" data-description="Affectionate and caring.">Loving</button>
+        <p class="description" id="description28">Affectionate and caring.</p>
+    </div>
+    <div class="button-description">
+        <button id="Mature" class="button" data-description="Responsible and grown-up.">Mature</button>
+        <p class="description" id="description29">Responsible and grown-up.</p>
+    </div>
+    <div class="button-description">
+        <button id="Modest" class="button" data-description="Humble and unpretentious.">Modest</button>
+        <p class="description" id="description30">Humble and unpretentious.</p>
+    </div>
+    <div class="button-description">
+        <button id="Nervous" class="button" data-description="Anxious and uneasy.">Nervous</button>
+        <p class="description" id="description30">Humble and unpretentious.</p>
+    </div>
+    <div class="button-description">
+        <button id="Observant" class="button" data-description="Perceptive and attentive.">Observant</button>
+        <p class="description" id="description31">Perceptive and attentive.</p>
+    </div>
+    <div class="button-description">
+        <button id="Organized" class="button" data-description="Methodical and orderly.">Organized</button>
+        <p class="description" id="description32">Methodical and orderly.</p>
+    </div>
+    <div class="button-description">
+        <button id="Patient" class="button" data-description="Tolerant and composed.">Patient</button>
+        <p class="description" id="description33">Tolerant and composed.</p>
+    </div>
+    <div class="button-description">
+        <button id="Powerful" class="button" data-description="Influential and strong.">Powerful</button>
+        <p class="description" id="description34">Influential and strong.</p>
+    </div>
+    <div class="button-description">
+        <button id="Proud" class="button" data-description="Self-respecting and dignified.">Proud</button>
+        <p class="description" id="description35">Self-respecting and dignified.</p>
+    </div>
+    <div class="button-description">
+        <button id="Quiet" class="button" data-description="Reserved and soft-spoken.">Quiet</button>
+        <p class="description" id="description36">Reserved and soft-spoken.</p>
+    </div>
+    <div class="button-description">
+        <button id="Reflective" class="button" data-description="Thoughtful and contemplative.">Reflective</button>
+        <p class="description" id="description37">Thoughtful and contemplative.</p>
+    </div>
+    <div class="button-description">
+        <button id="Relaxed" class="button" data-description="Easygoing and calm.">Relaxed</button>
+        <p class="description" id="description38">Easygoing and calm.</p>
+    </div>
+    <div class="button-description">
+        <button id="Religious" class="button" data-description="Spiritually inclined and devout.">Religious</button>
+        <p class="description" id="description39">Spiritually inclined and devout.</p>
+    </div>
+    <div class="button-description">
+        <button id="Responsive" class="button" data-description="Quick to react and sensitive.">Responsive</button>
+        <p class="description" id="description40">Quick to react and sensitive.</p>
+    </div>
+    <div class="button-description">
+        <button id="Searching" class="button" data-description="Inquisitive and curious.">Searching</button>
+        <p class="description" id="description41">Inquisitive and curious.</p>
+    </div>
+    <div class="button-description">
+        <button id="Self-assertive" class="button" data-description="Confident in expressing oneself.">Self-assertive</button>
+        <p class="description" id="description42">Confident in expressing oneself.</p>
+    </div>
+    <div class="button-description">
+        <button id="Self-conscious" class="button" data-description="Aware of oneself and surroundings.">Self-conscious</button>
+        <p class="description" id="description43">Aware of oneself and surroundings.</p>
+    </div>
+    <div class="button-description">
+        <button id="Sensible" class="button" data-description="Practical and level-headed.">Sensible</button>
+        <p class="description" id="description44">Practical and level-headed.</p>
+    </div>
+    <div class="button-description">
+        <button id="Sentimental" class="button" data-description="Emotional and nostalgic.">Sentimental</button>
+        <p class="description" id="description45">Emotional and nostalgic.</p>
+    </div>
+    <div class="button-description">
+        <button id="Shy" class="button" data-description="Reserved and hesitant in social situations.">Shy</button>
+        <p class="description" id="description46">Reserved and hesitant in social situations.</p>
+    </div>
+    <div class="button-description">
+        <button id="Silly" class="button" data-description="Playful and lighthearted.">Silly</button>
+        <p class="description" id="description47">Playful and lighthearted.</p>
+    </div>
+    <div class="button-description">
+        <button id="Spontaneous" class="button" data-description="Impulsive and adventurous.">Spontaneous</button>
+        <p class="description" id="description48">Impulsive and adventurous.</p>
+    </div>
+    <div class="button-description">
+        <button id="Sympathetic" class="button" data-description="Compassionate and understanding.">Sympathetic</button>
+        <p class="description" id="description49">Compassionate and understanding.</p>
+    </div>
+    <div class="button-description">
+        <button id="Tense" class="button" data-description="Anxious or strained.">Tense</button>
+        <p class="description" id="description50">Anxious or strained.</p>
+    </div>
+    <div class="button-description">
+        <button id="Trustworthy" class="button" data-description="Dependable and reliable.">Trustworthy</button>
+        <p class="description" id="description51">Dependable and reliable.</p>
+    </div>
+    <div class="button-description">
+        <button id="Warm" class="button" data-description="Friendly and affectionate.">Warm</button>
+        <p class="description" id="description52">Friendly and affectionate.</p>
+    </div>
+    <div class="button-description">
+        <button id="Wise" class="button" data-description="Knowledgeable and discerning.">Wise</button>
+        <p class="description" id="description53">Knowledgeable and discerning.</p>
+    </div>
+    <div class="button-description">
+        <button id="Witty" class="button" data-description="Quick and clever in humor.">Witty</button>
+        <p class="description" id="description54">Quick and clever in humor.</p>
+    </div>
+</div>
+<!-- Add more buttons and descriptions here -->
+<!-- ... -->
+
+</div>
+
+<!-- Download link -->
+<a id="downloadSelected" class="download-link" download="selected-buttons.txt" style="display: none;">Download Selected</a>
+
+<!-- Save button -->
+<button id="saveButton">Save</button>
+
+</body>
+
+</html>
